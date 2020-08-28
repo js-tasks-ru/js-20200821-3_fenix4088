@@ -5,7 +5,7 @@
  * @returns {object} - returns the new object
  */
 export const omit = (obj, ...keys) => {
-  let propertiesArr = Object.entries(obj);
+  const propertiesArr = Object.entries(obj);
   const newObj = {};
   // Перебираем массив propertiesArr
   propertiesArr.forEach((item) => {

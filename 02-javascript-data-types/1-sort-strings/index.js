@@ -9,10 +9,10 @@ export function sortStrings(arr, param = "asc") {
   // * Решение №2
   // С использование деструктуризации но сортировка происходит таким же образом как и в первом решении
   
-  const [cf, dir] = param === "asc" ? ["upper", 1] : ["lower", -1];
+  const [caseLetters = "upper", direction] = param === "asc" ? [ , 1] : [ , -1];
   const newArr = [...arr];
   return newArr.sort((a, b) => {
-    return a.localeCompare(b, "ru", { caseFirst: cf }) * dir;
+    return a.localeCompare(b, "ru", { caseFirst: caseLetters }) * direction;
   });
 
 
