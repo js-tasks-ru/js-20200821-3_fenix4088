@@ -49,6 +49,7 @@ export default class NotificationMessage {
   
     destroy() {
       this.element = null;
+      NotificationMessage.notificationStatus = null;
     }
   }
   
