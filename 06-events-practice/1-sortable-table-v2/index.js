@@ -4,6 +4,7 @@ export default class SortableTable {
     this.tableHeader = tableHeader;
     this.tableData = tableData;
     this.render();
+    this.sort(this.findFirstSortableElement().field, this.findFirstSortableElement().order);
     this.initEventListeners();
   }
 
@@ -14,6 +15,17 @@ export default class SortableTable {
 
     this.element = element;
     this.subElements = this.getSubElements(element);
+  }
+
+  findFirstSortableElement() {
+    const firstSortableElement = [...this.subElements.header.children].find(item => item.dataset.sortable === 'true');
+
+    const order = !firstSortableElement.dataset.order ? "asc" : "desc";
+
+    return {
+      field: firstSortableElement.dataset.id,
+      order
+    }
   }
 
   createTable(data) {
@@ -150,23 +162,11 @@ export default class SortableTable {
   }
 
   sortEvent(e) {
-
-    if (
-      e.target.dataset.sortable === "true" ||
-      e.target.parentNode.dataset.sortable === "true"
-    ) {
-      let field;
-      let currentElement;
-      if (!e.target.dataset.id) {
-        field = e.target.parentNode.dataset.id;
-        currentElement = e.target.parentNode;
-      } else {
-        field = e.target.dataset.id;
-        currentElement = e.target;
+      const currentElement = e.target.closest('[data-sortable=true]');
+      if(currentElement !== null) {
+        const field = currentElement.dataset.id;
+        const order = currentElement.dataset.order === "desc" ? "asc" : "desc";
+        this.sort(field, order);
       }
-
-      const order = currentElement.dataset.order === "desc" ? "asc" : "desc";
-      this.sort(field, order);
-    }
   }
 }

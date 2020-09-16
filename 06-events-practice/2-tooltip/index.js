@@ -1,5 +1,6 @@
 class Tooltip {
 
+    initialize() {}
 }
 
 const tooltip = new Tooltip();
