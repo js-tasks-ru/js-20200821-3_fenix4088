@@ -126,7 +126,6 @@ export default class DoubleSlider {
     };
   
     clickUp = (e) => {
-      console.log(this.element.classList);
       this.element.classList.remove('range-slider_dragging');
   
       document.removeEventListener('pointermove', this.pointerMove);
