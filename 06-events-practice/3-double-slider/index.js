@@ -3,6 +3,7 @@ export default class DoubleSlider {
     subElements = {};
     shiftX;
     dragging;
+
     constructor({
       min = 100,
       max = 200,
@@ -94,7 +95,7 @@ export default class DoubleSlider {
         if (newLeft < 0) {
           newLeft = 0;
         }
-        newLeft *= 100;
+        newLeft *= 100; 
         let right = parseFloat(this.subElements.thumbRight.style.right);
   
         if (newLeft + right > 100) {
