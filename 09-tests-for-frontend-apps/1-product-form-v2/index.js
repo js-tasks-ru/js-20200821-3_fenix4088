@@ -263,13 +263,6 @@ export default class ProductForm {
   }
 
   createImagesList() {
-    // return this.formData.images
-    //   .map((image) => {
-    //     return this.getImageItem(image.url, image.source).outerHTML;
-    //   })
-    //   .join("");
-
-    console.log(this.subElements);
     const {imageListContainer} = this.subElements;
     const {images} = this.formData;
     const items = images.map(image => this.getImageItem(image.url, image.source));
